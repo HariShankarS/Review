@@ -1,4 +1,4 @@
-<%= form_for(@reeview) do |f| %>
+<%= form_for([@movie, @reeview]) do |f| %>
   <% if @reeview.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@reeview.errors.count, "error") %> prohibited this reeview from being saved:</h2>

@@ -26,11 +26,31 @@
                   <td><strong>Rating:</strong></td>
                   <td><%= @movie.rating %></td>
                 </tr>
+                <tr>
+                  <td><strong>Public Rating:</strong></td>
+                  <td><%= @movie.average %>/5</td>
+                </tr>
               </tbody>
             </table>
+            <%= link_to "Write a Review", new_movie_reeview_path(@movie) %>
           </div>
-      <  
-    </div>
+      </div>
+      <div class="col-md-7 col-md-offset-1">
+        <h1 class="review_title"><%= @movie.title %></h1>
+        <p><%= @movie.description %></p>
+
+        <% if @movie.reeviews.blank? %>
+          <h3>No reviews just yet, would you like to add the first!</h3>
+          <%= link_to "Write Review", new_movie_reeview_path(@movie), class: "btn btn-danger" %>
+        <% else %>
+          <% @movie.reeviews.each do |review| %>
+            <div class="reviews">
+              <p> <%= review.rating %> </p>
+              <p><%= review.comment %></p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
   </div>
 </div>
 

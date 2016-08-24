@@ -1,3 +1,4 @@
+
 <div class="container">
 <% if !user_signed_in? %>
   <div class="jumbotron">
@@ -6,7 +7,10 @@
     <p><%= link_to "Sign Up To Write A Review", new_user_registration_path, class: "btn btn-primary btn-lg" %></p>
   </div>
 <% end %>
-
+<%= form_tag movies_path, :method => 'get' do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search" %>
+<% end %>  <br />
 <div class="row">
   <% @movies.each do |movie| %>
     <div class="col-sm-6 col-md-3">

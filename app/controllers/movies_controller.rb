@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   
   def index
-    @movies = Movie.all
+    @movies = Movie.where(["title LIKE ?","%#{params[:search]}%"])
   end
 
   def show
